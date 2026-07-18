@@ -1,0 +1,262 @@
+/*==================================
+  RESET
+==================================*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*==================================
+  VARIABLES
+==================================*/
+
+:root {
+    --bg: #f4f4f8;
+    --button: #f1f1f4;
+    --text: #6b6d80;
+    --display: #3d4058;
+    --operator: #26d2d1;
+
+    --shadow-light: rgba(255, 255, 255, 0.9);
+    --shadow-dark: rgba(0, 0, 0, 0.08);
+
+    --radius: 20px;
+}
+
+/*==================================
+  GLOBAL
+==================================*/
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #1b1b20;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+}
+
+/*==================================
+  CALCULATOR
+==================================*/
+
+.calculator {
+    width: min(100%, 380px);
+    height: 760px;
+
+    background: var(--bg);
+
+    border-radius: 45px;
+
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
+}
+
+/*==================================
+  DISPLAY
+==================================*/
+
+.display {
+    flex: 1.2;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    padding-bottom: 30px;
+}
+
+/*==================================
+  HISTORY
+==================================*/
+
+#history {
+    width: 100%;
+
+    text-align: right;
+
+    font-size: 1rem;
+
+    color: #9a9cab;
+
+    letter-spacing: 0.5px;
+
+    margin-bottom: 10px;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/*==================================
+  DISPLAY INPUT
+==================================*/
+
+#display {
+    width: 100%;
+
+    border: none;
+    outline: none;
+    background: transparent;
+
+    text-align: right;
+
+    font-size: 3.8rem;
+    font-weight: 600;
+
+    color: var(--display);
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    caret-color: transparent;
+}
+
+/*==================================
+  BUTTON GRID
+==================================*/
+
+.buttons {
+    flex: 1;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+/*==================================
+  BUTTONS
+==================================*/
+
+button {
+    height: 72px;
+
+    border: none;
+
+    border-radius: var(--radius);
+
+    background: var(--button);
+
+    color: var(--text);
+
+    font-size: 1.5rem;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+
+    box-shadow:
+        -6px -6px 12px var(--shadow-light),
+         6px  6px 12px var(--shadow-dark);
+}
+
+/*==================================
+  OPERATOR BUTTONS
+==================================*/
+
+.operator,
+.equals {
+    color: var(--operator);
+    font-weight: 600;
+}
+
+/*==================================
+  SPECIAL BUTTONS
+==================================*/
+
+.clear,
+.delete {
+    color: #8b8e9d;
+}
+
+.zero {
+    grid-column: span 2;
+}
+
+/*==================================
+  BUTTON STATES
+==================================*/
+
+button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        -8px -8px 18px rgba(255, 255, 255, 0.95),
+         8px  8px 18px rgba(0, 0, 0, 0.09);
+}
+
+button:active {
+    transform: scale(0.96);
+
+    box-shadow:
+        inset 4px 4px 8px rgba(0, 0, 0, 0.08),
+        inset -4px -4px 8px rgba(255, 255, 255, 1);
+}
+
+/*==================================
+  ACCESSIBILITY
+==================================*/
+
+button:focus-visible {
+    outline: 3px solid var(--operator);
+    outline-offset: 3px;
+}
+
+/*==================================
+  RESPONSIVE
+==================================*/
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .calculator {
+        width: 100%;
+        height: auto;
+
+        padding: 25px;
+
+        border-radius: 35px;
+    }
+
+    .display {
+        padding-bottom: 25px;
+    }
+
+    #display {
+        font-size: 3rem;
+    }
+
+    #history {
+        font-size: 0.9rem;
+    }
+
+    button {
+        height: 65px;
+        font-size: 1.3rem;
+    }
+
+    .buttons {
+        gap: 15px;
+    }
+}
